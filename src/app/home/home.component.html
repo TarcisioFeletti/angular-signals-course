@@ -2,7 +2,7 @@
 
   <h3>All Courses</h3>
 
-  <button class="btn">
+  <button class="btn" (click)="onAddCourse()">
     Add Course
   </button>
 
@@ -10,12 +10,16 @@
 
     <mat-tab label="Beginners">
 
-
+      <courses-card-list #beginnersList matTooltip="These are the beginners course"
+        (courseUpdated)="onCourseUpdated($event)" (courseDeleted)="onCourseDeleted($event)"
+        [courses]="beginnerCourses()" />
 
     </mat-tab>
 
     <mat-tab label="Advanced">
 
+      <courses-card-list (courseUpdated)="onCourseUpdated($event)" (courseDeleted)="onCourseDeleted($event)"
+        [courses]="advancedCourses()" />
 
     </mat-tab>
 
